@@ -137,8 +137,6 @@ resource "azurerm_linux_virtual_machine" "main" {
 #-----------nginx----------------------------
 resource "azurerm_virtual_machine_extension" "test" {
   count = local.instance_count
-  #resource_group_name  = azurerm_resource_group.main.name
-  #location             = azurerm_resource_group.main.location
   name                 = "hostname"
   virtual_machine_id   = azurerm_linux_virtual_machine.main[count.index].id
   publisher            = "Microsoft.Azure.Extensions"
